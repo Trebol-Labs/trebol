@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
-import TrebolMark from '@/components/ui/TrebolMark'
+import TrebolLogo from '@/components/ui/TrebolLogo'
 import Ticker from '@/components/Ticker'
 
 const heroVariants = {
@@ -17,32 +17,51 @@ const itemVariant = {
 }
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null)
-  const watermarkRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
   const gridY = useTransform(scrollY, [0, 1000], [0, 270])
 
   useEffect(() => {
     let mounted = true
+    let animMotion: any
+    let animTilt: any
+
     import('animejs').then(({ default: anime }) => {
-      if (!mounted || !watermarkRef.current) return
-      anime({
-        targets: watermarkRef.current,
-        rotateY: ['-25deg', '25deg'],
-        rotateX: ['-10deg', '10deg'],
-        translateZ: [0, 50],
+      if (!mounted) return
+
+      // Smooth organic floating
+      animMotion = anime({
+        targets: '.hero-watermark-motion',
+        translateY: ['-30px', '30px'],
+        translateX: ['-15px', '15px'],
         duration: 8000,
+        direction: 'alternate',
+        easing: 'easeInOutSine',
+        loop: true,
+      })
+
+      // 3D Tilt rotation
+      animTilt = anime({
+        targets: '.hero-watermark-tilt',
+        rotateY: ['-25deg', '25deg'],
+        rotateX: ['12deg', '-12deg'],
+        rotateZ: ['-2deg', '2deg'],
+        translateZ: [0, 80],
+        duration: 9000,
         direction: 'alternate',
         easing: 'easeInOutQuad',
         loop: true,
       })
     })
-    return () => { mounted = false }
+
+    return () => {
+      mounted = false
+      if (animMotion) animMotion.pause()
+      if (animTilt) animTilt.pause()
+    }
   }, [])
 
   return (
     <section
-      ref={ref}
       id="hero"
       className="relative overflow-hidden"
       style={{ minHeight: '100vh', display: 'grid', gridTemplateRows: '1fr auto' }}
@@ -76,14 +95,17 @@ export default function Hero() {
       {/* Watermark logo — 3D rotating */}
       <div
         className="absolute right-12 top-1/2 -translate-y-[52%] z-[1] hidden md:block"
-        style={{ perspective: '600px' }}
+        style={{ perspective: '1800px', perspectiveOrigin: '60% 46%' }}
         aria-hidden="true"
       >
-        <div ref={watermarkRef} style={{ transformStyle: 'preserve-3d' }}>
-          <TrebolMark
-            size="clamp(220px, 22vw, 330px)"
-            className="opacity-[0.07]"
-          />
+        <div className="hero-watermark-motion" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="hero-watermark-tilt" style={{ transformStyle: 'preserve-3d' }}>
+            <TrebolLogo
+              width="clamp(180px, 18vw, 260px)"
+              height="clamp(230px, 24vw, 320px)"
+              className="opacity-[0.075]"
+            />
+          </div>
         </div>
       </div>
 

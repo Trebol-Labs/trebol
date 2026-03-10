@@ -1,20 +1,22 @@
-interface TrebolMarkProps {
+interface TrebolLogoProps {
   color?: string
-  size?: number | string
+  width?: number | string
+  height?: number | string
   className?: string
 }
 
-export default function TrebolMark({
+export default function TrebolLogo({
   color = 'var(--sage)',
-  size = 34,
+  width = 104,
+  height = 138,
   className,
-}: TrebolMarkProps) {
+}: TrebolLogoProps) {
   return (
     <svg
-      viewBox="145 46 245 380"
+      viewBox="145 46 245 470"
       xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
+      width={width}
+      height={height}
       className={className}
       aria-hidden="true"
       style={{ color }}
