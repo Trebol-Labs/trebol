@@ -28,11 +28,12 @@ export default function Hero() {
       if (!mounted || !watermarkRef.current) return
       anime({
         targets: watermarkRef.current,
-        rotateY: ['-12deg', '12deg'],
-        rotateX: ['-4deg', '4deg'],
-        duration: 7000,
+        rotateY: ['-25deg', '25deg'],
+        rotateX: ['-10deg', '10deg'],
+        translateZ: [0, 50],
+        duration: 8000,
         direction: 'alternate',
-        easing: 'easeInOutSine',
+        easing: 'easeInOutQuad',
         loop: true,
       })
     })
