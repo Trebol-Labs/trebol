@@ -4,6 +4,7 @@ import './globals.css'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import Cursor from '@/components/Cursor'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 const spaceMono = Space_Mono({
   weight: ['400', '700'],
@@ -83,10 +84,12 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})()` }} />
       </head>
       <body>
-        <Cursor />
-        <Nav />
-        {children}
-        <Footer />
+        <LanguageProvider>
+          <Cursor />
+          <Nav />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )
