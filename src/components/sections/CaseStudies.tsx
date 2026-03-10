@@ -4,7 +4,7 @@ import { useRef, useEffect, ReactNode } from 'react'
 import type anime from 'animejs'
 import Reveal from '@/components/ui/Reveal'
 import SectionLabel from '@/components/ui/SectionLabel'
-import TrebolMark from '@/components/ui/TrebolMark'
+import TrebolLogo from '@/components/ui/TrebolLogo'
 import { caseStudies } from '@/lib/data/caseStudies'
 
 function CaseRow({ children, delay }: { children: ReactNode; delay: number }) {
@@ -109,7 +109,7 @@ export default function CaseStudies() {
                 className="hidden md:flex w-[175px] h-[105px] bg-olive-mid items-center justify-center flex-shrink-0 overflow-hidden"
                 aria-hidden="true"
               >
-                <TrebolMark size={46} className="opacity-[0.17] transition-opacity duration-300" />
+                <TrebolLogo width={36} height={46} className="opacity-[0.17] transition-opacity duration-300" />
               </div>
             </div>
           </CaseRow>

@@ -253,3 +253,41 @@ body::before {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+@keyframes heroWatermarkFloat {
+  0% {
+    transform: translate3d(0, -6px, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0) scale(1.012);
+  }
+  100% {
+    transform: translate3d(0, -6px, 0) scale(1);
+  }
+}
+
+@keyframes heroWatermarkTilt {
+  0% {
+    transform: rotateX(-1.5deg) rotateY(-5deg);
+  }
+  50% {
+    transform: rotateX(1.5deg) rotateY(5deg);
+  }
+  100% {
+    transform: rotateX(-1.5deg) rotateY(-5deg);
+  }
+}
+
+.hero-watermark-motion {
+  animation: heroWatermarkFloat 10s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hero-watermark-tilt {
+  animation: heroWatermarkTilt 14s ease-in-out infinite;
+  transform-style: preserve-3d;
+  transform-origin: 50% 58%;
+  filter: drop-shadow(0 24px 34px rgba(25, 35, 24, 0.04));
+  will-change: transform;
+}

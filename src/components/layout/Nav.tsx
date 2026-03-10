@@ -7,7 +7,7 @@ import ThemeToggle from '@/components/ThemeToggle'
 export default function Nav() {
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-between px-14 py-6"
+      className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-between px-14 py-[18px]"
     >
       {/* Gradient background */}
       <div

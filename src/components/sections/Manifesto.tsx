@@ -1,6 +1,6 @@
 import Reveal from '@/components/ui/Reveal'
 import SectionLabel from '@/components/ui/SectionLabel'
-import TrebolMark from '@/components/ui/TrebolMark'
+import TrebolLogo from '@/components/ui/TrebolLogo'
 
 export default function Manifesto() {
   return (
@@ -14,8 +14,9 @@ export default function Manifesto() {
         className="absolute right-[-60px] top-1/2 -translate-y-1/2 pointer-events-none"
         aria-hidden="true"
       >
-        <TrebolMark
-          size="clamp(280px, 32vw, 500px)"
+        <TrebolLogo
+          width="clamp(180px, 22vw, 320px)"
+          height="clamp(230px, 28vw, 400px)"
           className="opacity-[0.04]"
         />
       </div>
@@ -41,7 +42,7 @@ export default function Manifesto() {
 
         <Reveal delay={0.2} className="mt-[58px] flex items-center gap-[34px]">
           <div className="flex items-center gap-[10px]">
-            <TrebolMark size={30} className="opacity-65" />
+            <TrebolLogo width={34} height={42} className="opacity-65" />
             <span className="font-mono text-[10px] tracking-[.2em] text-sage-muted uppercase">
               Trebol · Bogotá
             </span>
