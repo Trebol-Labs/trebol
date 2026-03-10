@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── DESIGN TOKENS ── */
+:root {
+  --deep-olive: #1A2517;
+  --olive-dark: #111a0f;
+  --olive-mid: #1e2f1b;
+  --olive-surface: #2a3d26;
+  --sage: #ACC8A2;
+  --sage-dim: #7a9e73;
+  --sage-muted: #4e6b49;
+  --sage-pale: #d4e8cf;
+  --black: #070c06;
+  --white: #eef4ec;
+  --text-dim: rgba(172, 200, 162, 0.42);
+  --text-faint: rgba(172, 200, 162, 0.18);
+
+  /* ── Semantic border / surface tokens ── */
+  --border-subtle:        rgba(172, 200, 162, 0.07);
+  --border-dim:           rgba(172, 200, 162, 0.12);
+  --border-mid:           rgba(172, 200, 162, 0.18);
+  --border-bold:          rgba(172, 200, 162, 0.22);
+  --border-strong:        rgba(172, 200, 162, 0.28);
+  --border-accent:        rgba(172, 200, 162, 0.35);
+  --surface-hover:        rgba(26, 37, 23, 0.45);
+  --surface-hover-strong: rgba(26, 37, 23, 0.55);
+  --nav-overlay:          rgba(7, 12, 6, 0.88);
+  --ticker-surface:       rgba(26, 37, 23, 0.22);
+  --grid-line:            rgba(172, 200, 162, 0.033);
+  --hero-rad-1:           rgba(26, 37, 23, 0.85);
+  --hero-rad-2:           rgba(172, 200, 162, 0.05);
+  --manifesto-dim-text:   rgba(172, 200, 162, 0.32);
+  --noise-opacity:        0.5;
+}
+
+/* ── LIGHT MODE ── */
+[data-theme="light"] {
+  --black:        #f0f5ee;
+  --white:        #111c10;
+  --deep-olive:   #dce8d9;
+  --olive-dark:   #e8f2e5;
+  --olive-mid:    #d4e3d1;
+  --olive-surface: #c6d9c2;
+  --sage:         #2a6e24;
+  --sage-dim:     #3d8537;
+  --sage-muted:   #558f4e;
+  --sage-pale:    #1d5019;
+  --text-dim:     rgba(17, 28, 16, 0.50);
+  --text-faint:   rgba(17, 28, 16, 0.22);
+
+  --border-subtle:        rgba(17, 28, 16, 0.07);
+  --border-dim:           rgba(17, 28, 16, 0.12);
+  --border-mid:           rgba(17, 28, 16, 0.18);
+  --border-bold:          rgba(17, 28, 16, 0.22);
+  --border-strong:        rgba(17, 28, 16, 0.25);
+  --border-accent:        rgba(17, 28, 16, 0.30);
+  --surface-hover:        rgba(200, 222, 196, 0.55);
+  --surface-hover-strong: rgba(190, 215, 186, 0.65);
+  --nav-overlay:          rgba(240, 245, 238, 0.92);
+  --ticker-surface:       rgba(200, 220, 196, 0.35);
+  --grid-line:            rgba(17, 28, 16, 0.04);
+  --hero-rad-1:           rgba(216, 232, 214, 0.85);
+  --hero-rad-2:           rgba(42, 110, 36, 0.04);
+  --manifesto-dim-text:   rgba(17, 28, 16, 0.35);
+  --noise-opacity:        0.25;
+}
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--sage);
+  font-family: var(--font-bricolage), sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 180px;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: var(--noise-opacity);
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--sage);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.18s, height 0.18s;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-bold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.1s ease-out, height 0.1s ease-out, border-color 0.1s ease-out;
+}
+
+.cursor-dot.hovered {
+  width: 16px;
+  height: 16px;
+}
+
+.cursor-ring.hovered {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(172, 200, 162, 0.7);
+}
+
+/* ── CLIP-PATH BUTTONS ── */
+.clip-chamfer-sm {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.clip-chamfer-md {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.clip-chamfer-lg {
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px));
+}
+
+/* ── SERVICE CARD HOVER BAR ── */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sage), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── CASE ITEM HOVER BAR ── */
+.case-item {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+}
+
+.case-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--sage);
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+}
+
+.case-item:hover::before {
+  transform: scaleY(1);
+}
+
+/* ── FORM STYLES ── */
+.form-input,
+.form-textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-mid);
+  color: var(--white);
+  font-family: var(--font-bricolage), sans-serif;
+  font-size: 14px;
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--sage);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-faint);
+}
+
+.form-textarea {
+  resize: none;
+  height: 70px;
+}
+
+/* ── TICKER ── */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── PULSE ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.6); }
+}
+
+/* ── FADE ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

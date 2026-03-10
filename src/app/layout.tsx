@@ -1,0 +1,93 @@
+import type { Metadata, Viewport } from 'next'
+import { Space_Mono, Bricolage_Grotesque } from 'next/font/google'
+import './globals.css'
+import Nav from '@/components/layout/Nav'
+import Footer from '@/components/layout/Footer'
+import Cursor from '@/components/Cursor'
+
+const spaceMono = Space_Mono({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-space',
+  display: 'swap',
+})
+
+const bricolage = Bricolage_Grotesque({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  variable: '--font-bricolage',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://trebol.agency'),
+  title: 'Trebol — Bridge Between Ideas & Future',
+  description:
+    'Trebol is a young, ambitious software agency based in Bogotá, Colombia. We turn bold ideas into working technology.',
+  keywords: [
+    'software agency',
+    'tech innovation',
+    'software development',
+    'Bogotá',
+    'Colombia',
+    'digital strategy',
+    'UI/UX',
+    'systems architecture',
+  ],
+  openGraph: {
+    title: 'Trebol — Bridge Between Ideas & Future',
+    description:
+      'Trebol turns bold ideas into working technology. A young, ambitious team building software that outlasts the moment.',
+    url: 'https://trebol.agency',
+    siteName: 'Trebol Agency',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Trebol Agency',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Trebol — Bridge Between Ideas & Future',
+    description:
+      'Trebol turns bold ideas into working technology. A young, ambitious team building software that outlasts the moment.',
+    images: ['/og-image.png'],
+  },
+}
+
+export function generateViewport(): Viewport {
+  return {
+    width: 'device-width',
+    initialScale: 1,
+  }
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html
+      lang="en"
+      className={`${spaceMono.variable} ${bricolage.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})()` }} />
+      </head>
+      <body>
+        <Cursor />
+        <Nav />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  )
+}
