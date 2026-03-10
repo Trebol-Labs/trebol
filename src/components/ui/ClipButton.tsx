@@ -19,7 +19,7 @@ export default function ClipButton({
   return (
     <button
       className={cn(
-        'font-mono text-[11px] tracking-[.15em] uppercase transition-all duration-300',
+        'font-mono text-[12px] tracking-[.15em] uppercase transition-all duration-300',
         size === 'sm' ? 'px-[22px] py-[10px] clip-chamfer-sm' : 'px-[34px] py-[15px] clip-chamfer-md',
         variant === 'primary' && 'bg-sage text-brand-black hover:bg-sage-pale',
         variant === 'ghost' && 'text-sage border border-[rgba(172,200,162,0.22)] hover:border-sage hover:bg-[rgba(172,200,162,0.05)]',

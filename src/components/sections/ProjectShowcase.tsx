@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import SectionLabel from '@/components/ui/SectionLabel'
 import { caseStudies } from '@/lib/data/caseStudies'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // ── Browser frame wrapper ─────────────────────────────────────────────────────
 function BrowserFrame({ children }: { children: React.ReactNode }) {
@@ -247,6 +248,8 @@ const PREVIEWS = [NeuralOpsUI, VaultexUI, GridSenseUI, MeridianUI]
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function ProjectShowcase() {
+  const { t } = useLanguage()
+  const w = t.work
   const sectionRef = useRef<HTMLElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -269,19 +272,19 @@ export default function ProjectShowcase() {
         {/* Header */}
         <div className="px-6 md:px-14 pt-[70px] pb-8 max-w-[1400px] mx-auto w-full flex items-end justify-between">
           <div>
-            <SectionLabel className="mb-[14px]">Selected Work</SectionLabel>
+            <SectionLabel className="mb-[14px]">{w.label}</SectionLabel>
             <h2
               className="font-bebas text-brand-white leading-none tracking-[-0.02em]"
               style={{ fontSize: 'clamp(30px, 4vw, 52px)' }}
             >
-              CASE{' '}
+              {w.heading1}{' '}
               <span style={{ WebkitTextStroke: '1px var(--border-strong)', color: 'transparent' }}>
-                STUDIES
+                {w.heading2}
               </span>
             </h2>
           </div>
           {/* Active counter */}
-          <div className="hidden md:flex items-center gap-3 font-mono text-[10px] tracking-[.2em] text-[var(--text-dim)]">
+          <div className="hidden md:flex items-center gap-3 font-mono text-[12px] tracking-[.2em] text-[var(--text-dim)]">
             <span className="text-sage">{String(activeIndex + 1).padStart(2, '0')}</span>
             <span>/</span>
             <span>{String(caseStudies.length).padStart(2, '0')}</span>
@@ -303,6 +306,7 @@ export default function ProjectShowcase() {
 
             {caseStudies.map((cs, i) => {
               const isActive = i === activeIndex
+              const translated = w.cases[i]
               return (
                 <motion.div
                   key={cs.num}
@@ -314,7 +318,7 @@ export default function ProjectShowcase() {
                   <div className="flex items-start gap-5">
                     {/* Number */}
                     <span
-                      className="font-mono text-[10px] tracking-[.1em] pt-1 flex-shrink-0 transition-colors duration-300"
+                      className="font-mono text-[12px] tracking-[.1em] pt-1 flex-shrink-0 transition-colors duration-300"
                       style={{ color: isActive ? 'var(--sage)' : 'var(--text-dim)' }}
                     >
                       {cs.num}
@@ -343,7 +347,7 @@ export default function ProjectShowcase() {
                           color: isActive ? 'var(--white)' : 'var(--text-dim)',
                         }}
                       >
-                        {cs.name}
+                        {translated?.name ?? cs.name}
                       </div>
                       {/* Description — only shown for active */}
                       <AnimatePresence>
@@ -353,10 +357,10 @@ export default function ProjectShowcase() {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.35 }}
-                            className="font-mono text-[11px] leading-[1.7] overflow-hidden"
+                            className="font-mono text-[13px] leading-[1.7] overflow-hidden"
                             style={{ color: 'var(--text-dim)', marginTop: '8px' }}
                           >
-                            {cs.sub}
+                            {translated?.sub ?? cs.sub}
                           </motion.p>
                         )}
                       </AnimatePresence>
@@ -376,9 +380,9 @@ export default function ProjectShowcase() {
             })}
 
             {/* Scroll hint */}
-            <div className="mt-8 flex items-center gap-2 font-mono text-[8px] tracking-[.2em] uppercase"
+            <div className="mt-8 flex items-center gap-2 font-mono text-[11px] tracking-[.2em] uppercase"
               style={{ color: 'var(--text-dim)', opacity: activeIndex === caseStudies.length - 1 ? 0 : 0.6, transition: 'opacity 0.3s' }}>
-              <span>Scroll to explore</span>
+              <span>{w.scrollHint}</span>
               <span>↓</span>
             </div>
           </div>

@@ -1,17 +1,10 @@
 'use client'
 
-const ITEMS = [
-  'IT Development',
-  'Digital Innovation',
-  'Tech Strategy',
-  'Future-Forward',
-  'Systems Architecture',
-  'Product Design',
-]
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Ticker() {
-  // Duplicate items for seamless infinite scroll
-  const all = [...ITEMS, ...ITEMS]
+  const { t } = useLanguage()
+  const items = [...t.ticker, ...t.ticker]
 
   return (
     <div
@@ -22,10 +15,10 @@ export default function Ticker() {
         className="flex whitespace-nowrap"
         style={{ animation: 'ticker 28s linear infinite' }}
       >
-        {all.map((item, i) => (
+        {items.map((item, i) => (
           <span
             key={i}
-            className="font-mono text-[10px] tracking-[.22em] uppercase text-sage-muted px-11 flex items-center gap-11"
+            className="font-mono text-[12px] tracking-[.22em] uppercase text-sage-muted px-11 flex items-center gap-11"
             style={{ '--tw-content': '"◆"' } as React.CSSProperties}
           >
             {item}

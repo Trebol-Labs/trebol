@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import TrebolLogo from '@/components/ui/TrebolLogo'
 import Ticker from '@/components/Ticker'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const heroVariants = {
   hidden: {},
@@ -17,6 +18,7 @@ const itemVariant = {
 }
 
 export default function Hero() {
+  const { t } = useLanguage()
   const { scrollY } = useScroll()
   const gridY = useTransform(scrollY, [0, 1000], [0, 270])
 
@@ -120,7 +122,7 @@ export default function Hero() {
         {/* Eyebrow */}
         <motion.div
           variants={itemVariant}
-          className="flex items-center gap-[14px] font-mono text-[10px] tracking-[.22em] text-sage-muted uppercase mb-[34px]"
+          className="flex items-center gap-[14px] font-mono text-[12px] tracking-[.22em] text-sage-muted uppercase mb-[34px]"
         >
           <span className="block w-[30px] h-px bg-sage-muted flex-shrink-0" aria-hidden="true" />
           <span
@@ -128,7 +130,7 @@ export default function Hero() {
             style={{ animation: 'pulse 2.4s ease infinite' }}
             aria-hidden="true"
           />
-          Bogotá, Colombia &nbsp;·&nbsp; IT &amp; Innovation Agency
+          {t.hero.eyebrow}
         </motion.div>
 
         {/* Title */}
@@ -148,31 +150,31 @@ export default function Hero() {
         {/* Subtitle */}
         <motion.p
           variants={itemVariant}
-          className="mt-[34px] max-w-[420px] text-[14px] leading-[1.8] text-[var(--text-dim)]"
+          className="mt-[34px] max-w-[420px] text-[16px] leading-[1.8] text-[var(--text-dim)]"
         >
-          Trebol turns bold ideas into working technology. A young, ambitious team building software that outlasts the moment.
+          {t.hero.subtitle}
         </motion.p>
 
         {/* Actions */}
         <motion.div variants={itemVariant} className="mt-[50px] flex gap-4 items-center">
           <Link
             href="#work"
-            className="bg-sage text-brand-black font-mono text-[11px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline transition-all duration-300 hover:bg-sage-pale hover:-translate-y-0.5 clip-chamfer-md"
+            className="bg-sage text-brand-black font-mono text-[12px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline transition-all duration-300 hover:bg-sage-pale hover:-translate-y-0.5 clip-chamfer-md"
           >
-            See our work
+            {t.hero.cta1}
           </Link>
           <Link
             href="#contact"
-            className="text-sage font-mono text-[11px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline border border-[var(--border-bold)] transition-all duration-300 hover:border-sage hover:bg-[rgba(172,200,162,.05)]"
+            className="text-sage font-mono text-[12px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline border border-[var(--border-bold)] transition-all duration-300 hover:border-sage hover:bg-[rgba(172,200,162,.05)]"
           >
-            Let&apos;s talk
+            {t.hero.cta2}
           </Link>
         </motion.div>
       </motion.div>
 
       {/* Location badge */}
       <div
-        className="absolute right-14 bottom-24 hidden md:flex items-center gap-[10px] font-mono text-[9px] tracking-[.18em] uppercase text-sage-muted z-[3]"
+        className="absolute right-14 bottom-24 hidden md:flex items-center gap-[10px] font-mono text-[11px] tracking-[.18em] uppercase text-sage-muted z-[3]"
         style={{ animation: 'fadeIn 1s ease 1.1s both' }}
       >
         <span
@@ -180,7 +182,7 @@ export default function Hero() {
           style={{ animation: 'pulse 2.4s ease infinite' }}
           aria-hidden="true"
         />
-        Bogotá, Colombia &nbsp;·&nbsp; Available now
+        {t.hero.available}
       </div>
 
       {/* Ticker */}

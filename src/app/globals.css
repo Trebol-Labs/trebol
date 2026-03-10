@@ -14,8 +14,8 @@
   --sage-pale: #d4e8cf;
   --black: #070c06;
   --white: #eef4ec;
-  --text-dim: rgba(172, 200, 162, 0.42);
-  --text-faint: rgba(172, 200, 162, 0.18);
+  --text-dim: rgba(172, 200, 162, 0.62);
+  --text-faint: rgba(172, 200, 162, 0.30);
 
   /* ── Semantic border / surface tokens ── */
   --border-subtle:        rgba(172, 200, 162, 0.07);
@@ -47,8 +47,8 @@
   --sage-dim:     #3d8537;
   --sage-muted:   #558f4e;
   --sage-pale:    #1d5019;
-  --text-dim:     rgba(17, 28, 16, 0.50);
-  --text-faint:   rgba(17, 28, 16, 0.22);
+  --text-dim:     rgba(17, 28, 16, 0.68);
+  --text-faint:   rgba(17, 28, 16, 0.35);
 
   --border-subtle:        rgba(17, 28, 16, 0.07);
   --border-dim:           rgba(17, 28, 16, 0.12);
@@ -65,6 +65,20 @@
   --hero-rad-2:           rgba(42, 110, 36, 0.04);
   --manifesto-dim-text:   rgba(17, 28, 16, 0.35);
   --noise-opacity:        0.25;
+}
+
+/* ── FOCUS RING — keyboard navigation visibility ── */
+:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.clip-chamfer-sm:focus-visible,
+.clip-chamfer-md:focus-visible,
+.clip-chamfer-lg:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sage), inset 0 0 0 1px var(--sage);
 }
 
 /* ── RESET ── */
@@ -209,7 +223,7 @@ body::before {
   border-bottom: 1px solid var(--border-mid);
   color: var(--white);
   font-family: var(--font-bricolage), sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   padding: 10px 0;
   outline: none;
   transition: border-color 0.3s;
@@ -219,11 +233,12 @@ body::before {
 .form-input:focus,
 .form-textarea:focus {
   border-color: var(--sage);
+  box-shadow: 0 2px 0 0 rgba(172, 200, 162, 0.15);
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: var(--text-faint);
+  color: var(--text-dim);
 }
 
 .form-textarea {
