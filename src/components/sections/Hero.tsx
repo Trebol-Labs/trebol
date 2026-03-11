@@ -66,7 +66,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative overflow-hidden"
-      style={{ minHeight: '100vh', display: 'grid', gridTemplateRows: '1fr auto' }}
+      style={{ minHeight: '100vh', paddingBottom: '44px' }}
     >
       {/* Background gradient */}
       <div
@@ -113,8 +113,8 @@ export default function Hero() {
 
       {/* Hero content */}
       <motion.div
-        className="flex flex-col justify-center relative z-[2]"
-        style={{ padding: 'clamp(108px, 10vw, 148px) clamp(24px, 4vw, 56px) 60px', maxWidth: 1400 }}
+        className="flex flex-col justify-center relative z-[2] min-h-[calc(100vh-44px)]"
+        style={{ padding: 'clamp(80px, 8vw, 120px) clamp(24px, 4vw, 56px) 40px', maxWidth: 1400 }}
         variants={heroVariants}
         initial="hidden"
         animate="visible"
@@ -185,8 +185,10 @@ export default function Hero() {
         {t.hero.available}
       </div>
 
-      {/* Ticker */}
-      <Ticker />
+      {/* Ticker — anchored to bottom of hero, always visible in first viewport */}
+      <div className="absolute bottom-0 left-0 right-0 z-[3]">
+        <Ticker />
+      </div>
     </section>
   )
 }
