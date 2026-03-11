@@ -3,26 +3,20 @@ import type { CaseStudy } from '@/types'
 export const caseStudies: CaseStudy[] = [
   {
     num: '001',
-    tags: ['AI Platform', 'Full Stack'],
-    name: 'NeuralOps Platform',
-    sub: 'Intelligent operations platform reducing manual workload by 70%',
+    tags: ['PWA', 'Gov-Tech'],
+    name: 'FOMAG',
+    sub: 'Mobile-first PWA digitalizing health data for 890,000 Colombian teachers',
   },
   {
     num: '002',
-    tags: ['Fintech', 'Architecture'],
-    name: 'Vaultex Core',
-    sub: 'Next-gen financial infrastructure for emerging market scale-ups',
+    tags: ['AI', 'HealthTech'],
+    name: 'OCTsense',
+    sub: 'AI-powered platform diagnosing ocular pathologies from OCT scans in seconds',
   },
   {
     num: '003',
-    tags: ['IoT', 'Real-time'],
-    name: 'GridSense Network',
-    sub: 'Real-time IoT monitoring across distributed industrial infrastructure',
-  },
-  {
-    num: '004',
-    tags: ['SaaS', 'Product Design'],
-    name: 'Meridian Suite',
-    sub: 'End-to-end SaaS platform for B2B workflow automation',
+    tags: ['PWA', 'Product Design'],
+    name: 'Routyne',
+    sub: 'Premium mobile-first PWA turning Markdown workout plans into interactive training sessions',
   },
 ]

@@ -28,223 +28,185 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
   )
 }
 
-// ── Mock UI: NeuralOps (AI Platform) ─────────────────────────────────────────
-function NeuralOpsUI() {
-  return (
-    <div className="w-full h-full flex overflow-hidden font-mono" style={{ background: '#080c07' }}>
-      <div className="w-12 h-full flex-shrink-0 flex flex-col items-center py-4 gap-3"
-        style={{ background: '#0a0f09', borderRight: '1px solid rgba(172,200,162,0.06)' }}>
-        {['⬡', '◈', '▣', '◉', '◬'].map((icon, i) => (
-          <div key={i} className="w-7 h-7 flex items-center justify-center text-[11px]"
-            style={{ color: i === 0 ? '#acc8a2' : 'rgba(172,200,162,0.2)' }}>{icon}</div>
-        ))}
-      </div>
-      <div className="flex-1 flex flex-col p-3 gap-2 overflow-hidden">
-        <div className="text-[7px] tracking-[.22em] uppercase" style={{ color: 'rgba(172,200,162,0.3)' }}>
-          Neural Activity — Live
-        </div>
-        <div className="grid grid-cols-3 gap-1.5">
-          {[['94.2%', 'Accuracy', true], ['2.3M', 'Ops/min', false], ['−70%', 'Workload', false]].map(([v, l, hi]) => (
-            <div key={String(l)} className="p-2"
-              style={{ border: `1px solid rgba(172,200,162,${hi ? '0.2' : '0.07'})`, background: hi ? 'rgba(172,200,162,0.03)' : 'transparent' }}>
-              <div className="text-[14px] font-bold leading-none" style={{ color: '#acc8a2' }}>{v}</div>
-              <div className="text-[7px] mt-1 tracking-widest uppercase" style={{ color: 'rgba(172,200,162,0.3)' }}>{l}</div>
-            </div>
-          ))}
-        </div>
-        <div className="flex-1 relative overflow-hidden"
-          style={{ border: '1px solid rgba(172,200,162,0.07)' }}>
-          <div className="absolute top-2 left-2 text-[7px] tracking-[.2em] uppercase" style={{ color: 'rgba(172,200,162,0.25)' }}>
-            Processing pipeline
-          </div>
-          <svg className="absolute bottom-0 left-0 w-full" height="65%" viewBox="0 0 300 80" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="ng" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#acc8a2" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#acc8a2" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path d="M0 55 C30 50 60 62 90 38 C120 14 150 30 180 22 C210 14 240 44 270 28 L300 28 L300 80 L0 80Z" fill="url(#ng)" />
-            <path d="M0 55 C30 50 60 62 90 38 C120 14 150 30 180 22 C210 14 240 44 270 28 L300 28" fill="none" stroke="#acc8a2" strokeWidth="1.5" />
-            <path d="M0 62 C50 60 100 65 150 58 C200 52 250 58 300 55" fill="none" stroke="rgba(172,200,162,0.15)" strokeWidth="0.8" />
-          </svg>
-        </div>
-        <div className="flex flex-col gap-1">
-          {[['Ingestion', '100%', 1], ['Processing', '87%', 0.87], ['Inference', '71%', 0.71]].map(([label, pct, val]) => (
-            <div key={String(label)} className="flex items-center gap-2">
-              <div className="text-[7px] tracking-wider uppercase w-14 flex-shrink-0" style={{ color: 'rgba(172,200,162,0.35)' }}>{label}</div>
-              <div className="flex-1 h-[2px]" style={{ background: 'rgba(172,200,162,0.08)' }}>
-                <div className="h-full" style={{ width: String(pct), background: '#acc8a2', opacity: 0.65 }} />
-              </div>
-              <div className="text-[7px] w-6 text-right" style={{ color: 'rgba(172,200,162,0.35)' }}>{pct}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ── Mock UI: Vaultex (Fintech) ────────────────────────────────────────────────
-function VaultexUI() {
+// ── Mock UI: FOMAG (Gov-Tech PWA) ─────────────────────────────────────────────
+function FOMAGUi() {
   return (
     <div className="w-full h-full flex flex-col overflow-hidden font-mono" style={{ background: '#080c07' }}>
       <div className="flex items-center justify-between px-4 py-2 flex-shrink-0"
         style={{ borderBottom: '1px solid rgba(172,200,162,0.07)' }}>
         <div className="text-[8px] tracking-[.2em] uppercase" style={{ color: 'rgba(172,200,162,0.4)' }}>
-          Vaultex · Treasury
+          FOMAG · Portal Docente
         </div>
         <div className="flex gap-4 text-[7px] tracking-wider uppercase">
-          {['Dashboard', 'Ledger', 'Risk'].map((item, i) => (
-            <span key={item} style={{ color: i === 1 ? '#acc8a2' : 'rgba(172,200,162,0.25)' }}>{item}</span>
+          {['Inicio', 'Historia', 'Documentos'].map((item, i) => (
+            <span key={item} style={{ color: i === 2 ? '#acc8a2' : 'rgba(172,200,162,0.25)' }}>{item}</span>
           ))}
         </div>
       </div>
       <div className="px-4 py-3 flex-shrink-0" style={{ borderBottom: '1px solid rgba(172,200,162,0.06)' }}>
-        <div className="text-[7px] tracking-[.2em] uppercase mb-1" style={{ color: 'rgba(172,200,162,0.3)' }}>Total reserves</div>
+        <div className="text-[7px] tracking-[.2em] uppercase mb-1" style={{ color: 'rgba(172,200,162,0.3)' }}>Afiliados activos</div>
         <div className="font-bold leading-none" style={{ color: '#acc8a2', fontSize: '26px', letterSpacing: '-0.02em' }}>
-          $4,821,304<span style={{ color: 'rgba(172,200,162,0.4)', fontSize: '13px' }}>.92</span>
+          890<span style={{ color: 'rgba(172,200,162,0.4)', fontSize: '13px' }}>,000 docentes</span>
         </div>
-        <div className="text-[7px] mt-1" style={{ color: 'rgba(172,200,162,0.3)' }}>↑ 12.4% from last settlement</div>
+        <div className="text-[7px] mt-1" style={{ color: 'rgba(172,200,162,0.3)' }}>↑ Cobertura nacional · Colombia</div>
       </div>
-      <div className="flex-1 overflow-hidden flex flex-col px-4 py-2">
-        <div className="text-[7px] tracking-[.2em] uppercase mb-2" style={{ color: 'rgba(172,200,162,0.25)' }}>Recent transactions</div>
+      <div className="flex-1 overflow-hidden flex flex-col px-4 py-2 gap-1.5">
+        <div className="text-[7px] tracking-[.2em] uppercase mb-1" style={{ color: 'rgba(172,200,162,0.25)' }}>Carga de documentos</div>
         {[
-          ['TXN-9412', '+$234,000', 'SETTLED', true],
-          ['TXN-9411', '-$88,500', 'CLEARED', true],
-          ['TXN-9410', '+$1,200,000', 'PENDING', false],
-          ['TXN-9409', '-$45,000', 'SETTLED', true],
-          ['TXN-9408', '+$670,000', 'SETTLED', true],
-        ].map(([id, amt, status, settled]) => (
-          <div key={String(id)} className="flex items-center justify-between py-1.5"
+          ['Certificado médico', 'PDF', 'CARGADO', true],
+          ['Historia clínica', 'PDF', 'PENDIENTE', false],
+          ['Autorización EPS', 'IMG', 'CARGADO', true],
+          ['Orden de laboratorio', 'PDF', 'REVISIÓN', false],
+        ].map(([name, type, status, done]) => (
+          <div key={String(name)} className="flex items-center justify-between py-1.5"
             style={{ borderBottom: '1px solid rgba(172,200,162,0.04)' }}>
-            <span className="text-[7px]" style={{ color: 'rgba(172,200,162,0.4)' }}>{id}</span>
-            <span className="text-[8px] font-bold" style={{ color: String(amt).startsWith('+') ? '#acc8a2' : 'rgba(172,200,162,0.55)' }}>{amt}</span>
-            <span className="text-[6px] tracking-[.15em] uppercase px-1.5 py-0.5"
-              style={{ color: settled ? '#acc8a2' : 'rgba(172,200,162,0.35)', border: `1px solid rgba(172,200,162,${settled ? '0.22' : '0.08'})` }}>
+            <div className="flex items-center gap-2 min-w-0">
+              <span className="text-[6px] tracking-wider px-1 py-0.5 flex-shrink-0"
+                style={{ border: '1px solid rgba(172,200,162,0.15)', color: 'rgba(172,200,162,0.4)' }}>{type}</span>
+              <span className="text-[7px] truncate" style={{ color: 'rgba(172,200,162,0.55)' }}>{name}</span>
+            </div>
+            <span className="text-[6px] tracking-[.15em] uppercase px-1.5 py-0.5 flex-shrink-0"
+              style={{ color: done ? '#acc8a2' : 'rgba(172,200,162,0.35)', border: `1px solid rgba(172,200,162,${done ? '0.22' : '0.08'})` }}>
               {status}
             </span>
           </div>
         ))}
+        <div className="mt-auto pt-2 flex gap-2">
+          <div className="flex-1 py-1.5 text-center text-[7px] tracking-wider uppercase"
+            style={{ border: '1px solid rgba(172,200,162,0.2)', color: '#acc8a2' }}>
+            + Subir archivo
+          </div>
+          <div className="flex-1 py-1.5 text-center text-[7px] tracking-wider uppercase"
+            style={{ background: 'rgba(172,200,162,0.08)', border: '1px solid rgba(172,200,162,0.07)', color: 'rgba(172,200,162,0.4)' }}>
+            Enviar solicitud
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-// ── Mock UI: GridSense (IoT) ──────────────────────────────────────────────────
-function GridSenseUI() {
-  const nodeData = [
-    { id: 0, x: 22, y: 22, active: true, pulse: false },
-    { id: 1, x: 52, y: 18, active: true, pulse: true },
-    { id: 2, x: 80, y: 25, active: false, pulse: false },
-    { id: 3, x: 15, y: 50, active: true, pulse: false },
-    { id: 4, x: 48, y: 48, active: true, pulse: true },
-    { id: 5, x: 78, y: 52, active: true, pulse: false },
-    { id: 6, x: 22, y: 75, active: true, pulse: false },
-    { id: 7, x: 52, y: 80, active: false, pulse: false },
-    { id: 8, x: 82, y: 78, active: true, pulse: true },
-  ]
-  const edges = [[0,1],[1,4],[4,3],[4,5],[4,6],[1,2],[5,8],[6,7],[7,8],[0,3]]
+// ── Mock UI: OCTsense (HealthTech AI) ─────────────────────────────────────────
+function OCTsenseUI() {
   return (
-    <div className="w-full h-full flex overflow-hidden" style={{ background: '#080c07' }}>
-      <div className="w-20 flex-shrink-0 flex flex-col gap-3 p-3 font-mono"
+    <div className="w-full h-full flex overflow-hidden font-mono" style={{ background: '#080c07' }}>
+      {/* Left: scan panel */}
+      <div className="flex-1 flex flex-col p-3 gap-2 overflow-hidden"
         style={{ borderRight: '1px solid rgba(172,200,162,0.07)' }}>
-        <div className="text-[7px] tracking-[.2em] uppercase" style={{ color: 'rgba(172,200,162,0.3)' }}>Network</div>
-        {[['Nodes', '14/16'], ['Online', '87.5%'], ['Alerts', '2'], ['Latency', '4ms']].map(([k, v]) => (
-          <div key={String(k)}>
-            <div className="text-[6px] tracking-wider uppercase" style={{ color: 'rgba(172,200,162,0.25)' }}>{k}</div>
-            <div className="text-[11px] font-bold mt-0.5" style={{ color: '#acc8a2' }}>{v}</div>
-          </div>
-        ))}
-        <div className="mt-auto">
-          <div className="text-[6px] tracking-wider uppercase mb-1.5" style={{ color: 'rgba(172,200,162,0.25)' }}>Throughput</div>
-          <div className="flex items-end gap-0.5 h-6">
-            {[0.8, 0.5, 0.9, 0.65, 0.85, 0.45, 0.75].map((h, i) => (
-              <div key={i} className="flex-1 rounded-sm" style={{ height: `${h * 100}%`, background: `rgba(172,200,162,${0.3 + h * 0.3})` }} />
+        <div className="text-[7px] tracking-[.22em] uppercase" style={{ color: 'rgba(172,200,162,0.3)' }}>
+          OCT Scan · Retina Cross-section
+        </div>
+        <div className="flex-1 relative overflow-hidden"
+          style={{ border: '1px solid rgba(172,200,162,0.1)', background: '#050805' }}>
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" preserveAspectRatio="none">
+            {[20,35,50,65,80].map((y, i) => (
+              <path key={i}
+                d={`M0 ${y} C40 ${y + (i%2===0?-6:6)} 80 ${y + (i%2===0?8:-4)} 120 ${y + (i%2===0?-3:7)} C160 ${y + (i%2===0?10:-8)} 200 ${y + (i%2===0?-5:5)} 200 ${y}`}
+                fill="none" stroke={`rgba(172,200,162,${0.08 + i*0.06})`} strokeWidth={i === 2 ? '1.5' : '0.7'} />
             ))}
-          </div>
+            <rect x="72" y="28" width="28" height="18" rx="1"
+              fill="none" stroke="rgba(172,200,162,0.5)" strokeWidth="0.8" strokeDasharray="2 1.5" />
+            <text x="102" y="38" fontSize="5" fill="rgba(172,200,162,0.55)" fontFamily="monospace">ROI</text>
+          </svg>
+        </div>
+        <div className="text-[6px] tracking-wider text-center uppercase" style={{ color: 'rgba(172,200,162,0.2)' }}>
+          Scan ID: OCT-2024-0847 · OD
         </div>
       </div>
-      <div className="flex-1 p-3">
-        <div className="text-[7px] tracking-[.2em] uppercase font-mono mb-2" style={{ color: 'rgba(172,200,162,0.3)' }}>
-          Sensor topology · Zone A-7
+      {/* Right: AI result */}
+      <div className="w-[45%] flex-shrink-0 flex flex-col p-3 gap-2 overflow-hidden">
+        <div className="text-[7px] tracking-[.22em] uppercase" style={{ color: 'rgba(172,200,162,0.3)' }}>
+          AI Diagnosis
         </div>
-        <svg className="w-full h-[85%]" viewBox="0 0 100 100" fill="none">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <g key={i}>
-              <line x1={i*20} y1="0" x2={i*20} y2="100" stroke="rgba(172,200,162,0.04)" strokeWidth="0.5" />
-              <line x1="0" y1={i*20} x2="100" y2={i*20} stroke="rgba(172,200,162,0.04)" strokeWidth="0.5" />
-            </g>
+        <div className="p-2" style={{ border: '1px solid rgba(172,200,162,0.2)', background: 'rgba(172,200,162,0.03)' }}>
+          <div className="text-[11px] font-bold leading-tight" style={{ color: '#acc8a2' }}>DME Detected</div>
+          <div className="text-[6px] mt-0.5 tracking-wider uppercase" style={{ color: 'rgba(172,200,162,0.4)' }}>
+            Diabetic Macular Edema
+          </div>
+        </div>
+        <div className="flex flex-col gap-1.5 flex-1">
+          <div className="text-[6px] tracking-wider uppercase" style={{ color: 'rgba(172,200,162,0.25)' }}>Confidence</div>
+          {[['DME', 94], ['Normal', 4], ['AMD', 2]].map(([label, pct]) => (
+            <div key={String(label)}>
+              <div className="flex justify-between text-[6px] mb-0.5">
+                <span style={{ color: 'rgba(172,200,162,0.5)' }}>{label}</span>
+                <span style={{ color: '#acc8a2' }}>{pct}%</span>
+              </div>
+              <div className="h-[3px]" style={{ background: 'rgba(172,200,162,0.08)' }}>
+                <div className="h-full" style={{ width: `${pct}%`, background: '#acc8a2', opacity: label === 'DME' ? 0.8 : 0.3 }} />
+              </div>
+            </div>
           ))}
-          {edges.map(([a, b], i) => {
-            const na = nodeData[a], nb = nodeData[b]
-            return na && nb ? (
-              <line key={i} x1={na.x} y1={na.y} x2={nb.x} y2={nb.y}
-                stroke="rgba(172,200,162,0.2)" strokeWidth="0.6" strokeDasharray="2 2" />
-            ) : null
-          })}
-          {nodeData.map(n => (
-            <g key={n.id}>
-              {n.pulse && <circle cx={n.x} cy={n.y} r="6" stroke="rgba(172,200,162,0.2)" strokeWidth="0.5" />}
-              <circle cx={n.x} cy={n.y} r="2.8"
-                fill={n.active ? '#acc8a2' : 'rgba(172,200,162,0.12)'}
-                stroke={n.active ? 'none' : 'rgba(172,200,162,0.25)'}
-                strokeWidth="0.5" />
-            </g>
+        </div>
+        <div className="flex flex-col gap-1 mt-auto">
+          <div className="text-[6px] tracking-wider uppercase mb-0.5" style={{ color: 'rgba(172,200,162,0.25)' }}>Recommended</div>
+          {['Retinal thickness map', 'Ophthalmology referral'].map(rec => (
+            <div key={rec} className="text-[6px] px-2 py-1 flex items-center gap-1.5"
+              style={{ border: '1px solid rgba(172,200,162,0.1)', color: 'rgba(172,200,162,0.55)' }}>
+              <span style={{ color: '#acc8a2' }}>→</span>{rec}
+            </div>
           ))}
-        </svg>
+        </div>
       </div>
     </div>
   )
 }
 
-// ── Mock UI: Meridian (SaaS Kanban) ──────────────────────────────────────────
-function MeridianUI() {
-  const cols = [
-    { label: 'Backlog', cards: ['User auth flow', 'API rate limiting', 'SSO integration'] },
-    { label: 'In Progress', cards: ['Dashboard v2', 'Webhook system'], active: true },
-    { label: 'Review', cards: ['Billing module'] },
-    { label: 'Done', cards: ['Data export', 'Team roles'] },
+// ── Mock UI: Routyne (Fitness PWA) ────────────────────────────────────────────
+function RoutyneUI() {
+  const exercises = [
+    { name: 'Squat', sets: '4×8', done: true },
+    { name: 'Romanian Deadlift', sets: '3×10', done: true },
+    { name: 'Leg Press', sets: '3×12', done: false },
+    { name: 'Calf Raise', sets: '4×15', done: false },
   ]
   return (
     <div className="w-full h-full flex flex-col overflow-hidden font-mono" style={{ background: '#080c07' }}>
       <div className="flex items-center justify-between px-4 py-2 flex-shrink-0"
         style={{ borderBottom: '1px solid rgba(172,200,162,0.07)' }}>
         <div className="text-[8px] tracking-[.2em] uppercase" style={{ color: 'rgba(172,200,162,0.4)' }}>
-          Meridian · Sprint 14
+          Routyne · Today
         </div>
-        <div className="flex gap-1">
-          {['◈', '▣', '◉'].map((icon, i) => (
-            <div key={i} className="w-5 h-5 flex items-center justify-center text-[9px]"
-              style={{ color: 'rgba(172,200,162,0.25)' }}>{icon}</div>
-          ))}
+        <div className="text-[7px] tracking-wider" style={{ color: 'rgba(172,200,162,0.35)' }}>Lower Body A</div>
+      </div>
+      {/* Progress bar */}
+      <div className="px-4 py-2 flex-shrink-0" style={{ borderBottom: '1px solid rgba(172,200,162,0.06)' }}>
+        <div className="flex items-center justify-between mb-1">
+          <span className="text-[6px] tracking-wider uppercase" style={{ color: 'rgba(172,200,162,0.3)' }}>Progress</span>
+          <span className="text-[6px]" style={{ color: 'rgba(172,200,162,0.5)' }}>2 / 4 exercises</span>
+        </div>
+        <div className="h-[3px] w-full" style={{ background: 'rgba(172,200,162,0.08)' }}>
+          <div className="h-full" style={{ width: '50%', background: '#acc8a2' }} />
         </div>
       </div>
-      <div className="flex-1 flex gap-2 p-3 overflow-hidden">
-        {cols.map(col => (
-          <div key={col.label} className="flex-1 flex flex-col gap-1.5 min-w-0">
-            <div className="flex items-center justify-between mb-0.5">
-              <span className="text-[7px] tracking-[.15em] uppercase" style={{ color: 'rgba(172,200,162,0.35)' }}>{col.label}</span>
-              <span className="text-[7px]" style={{ color: 'rgba(172,200,162,0.2)' }}>{col.cards.length}</span>
+      {/* Exercise list */}
+      <div className="flex-1 overflow-hidden flex flex-col px-4 py-2 gap-1.5">
+        {exercises.map((ex, i) => (
+          <div key={ex.name} className="flex items-center gap-3 py-1.5"
+            style={{ borderBottom: '1px solid rgba(172,200,162,0.04)', opacity: ex.done ? 1 : 0.55 }}>
+            <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center text-[9px]"
+              style={{ border: `1px solid rgba(172,200,162,${ex.done ? '0.4' : '0.15'})`, color: ex.done ? '#acc8a2' : 'transparent' }}>
+              {ex.done ? '✓' : ''}
             </div>
-            {col.cards.map(card => (
-              <div key={card} className="p-2 text-[7px] leading-tight"
-                style={{
-                  border: `1px solid rgba(172,200,162,${col.active ? '0.18' : '0.07'})`,
-                  background: col.active ? 'rgba(172,200,162,0.04)' : 'transparent',
-                  color: col.active ? 'rgba(172,200,162,0.8)' : 'rgba(172,200,162,0.4)',
-                }}>
-                {card}
-              </div>
-            ))}
+            <div className="flex-1 min-w-0">
+              <div className="text-[8px] font-bold" style={{ color: ex.done ? '#acc8a2' : 'rgba(172,200,162,0.6)' }}>{ex.name}</div>
+            </div>
+            <div className="text-[7px] tracking-wider" style={{ color: 'rgba(172,200,162,0.35)' }}>{ex.sets}</div>
           </div>
         ))}
+      </div>
+      {/* CTA */}
+      <div className="px-4 pb-3 flex-shrink-0">
+        <div className="w-full py-2 text-center text-[7px] tracking-[.2em] uppercase"
+          style={{ border: '1px solid rgba(172,200,162,0.25)', color: '#acc8a2' }}>
+          Start Next Exercise →
+        </div>
       </div>
     </div>
   )
 }
 
-const PREVIEWS = [NeuralOpsUI, VaultexUI, GridSenseUI, MeridianUI]
+const PREVIEWS = [FOMAGUi, OCTsenseUI, RoutyneUI]
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function ProjectShowcase() {

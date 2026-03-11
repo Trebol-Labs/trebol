@@ -12,7 +12,7 @@ export const translations = {
       eyebrow: 'Bogotá, Colombia · IT & Innovation Agency',
       available: 'Bogotá, Colombia · Available now',
       subtitle:
-        'Trebol turns bold ideas into working technology. A young, ambitious team building software that outlasts the moment.',
+        'Trebol Labs turns bold ideas into working technology. Two engineers with a hunger for the cutting edge — MultiStack by nature, ambitious by design.',
       cta1: 'See our work',
       cta2: "Let's talk",
     },
@@ -20,8 +20,8 @@ export const translations = {
       label: 'Where we stand',
       aside: ["We don't sell a track record.", 'We sell talent, time,', 'and full commitment.'],
       stats: [
-        { val: 'Early', suffix: ' stage', desc: 'Building our story' },
-        { val: 'BOG', suffix: ' based', desc: 'Latin America' },
+        { val: 'Early', suffix: ' stage', desc: 'Writing our story' },
+        { val: 'BOG', suffix: ' based', desc: 'Latin America & beyond' },
         { val: '100', suffix: '%', desc: 'Skin in the game' },
         { val: '∞', suffix: '', desc: 'Runway of ambition' },
       ],
@@ -40,7 +40,7 @@ export const translations = {
         },
         {
           name: 'Tech Innovation',
-          desc: "AI integrations, automation, and systems that don't just follow trends — they create them.",
+          desc: "AI integrations, automation, and a MultiStack approach — using whatever technology is most effective, not just what's familiar.",
         },
         {
           name: 'Digital Strategy',
@@ -67,20 +67,16 @@ export const translations = {
       scrollHint: 'Scroll to explore',
       cases: [
         {
-          name: 'NeuralOps Platform',
-          sub: 'Intelligent operations platform reducing manual workload by 70%',
+          name: 'FOMAG',
+          sub: 'Mobile-first PWA digitalizing health data for 890,000 Colombian teachers',
         },
         {
-          name: 'Vaultex Core',
-          sub: 'Next-gen financial infrastructure for emerging market scale-ups',
+          name: 'OCTsense',
+          sub: 'AI-powered platform diagnosing ocular pathologies from OCT scans in seconds',
         },
         {
-          name: 'GridSense Network',
-          sub: 'Real-time IoT monitoring across distributed industrial infrastructure',
-        },
-        {
-          name: 'Meridian Suite',
-          sub: 'End-to-end SaaS platform for B2B workflow automation',
+          name: 'Routyne',
+          sub: 'Premium PWA turning Markdown workout plans into interactive training sessions',
         },
       ],
     },
@@ -88,10 +84,10 @@ export const translations = {
       label: 'Our belief',
       part1: "The future doesn't wait for anyone.",
       part2: ' We are the bridge',
-      part3: ' between where your idea lives today',
-      part4: " and where it's meant to go.",
-      part5: ' Young, ambitious,',
-      part6: ' with everything still to prove —',
+      part3: ' between technology and the humans it serves.',
+      part4: ' A robot and a clover:',
+      part5: ' innovation without losing',
+      part6: ' what makes us human —',
       part7: " and that's our greatest asset.",
     },
     contact: {
@@ -118,13 +114,13 @@ export const translations = {
     ticker: [
       'IT Development',
       'Digital Innovation',
-      'Tech Strategy',
+      'MultiStack',
       'Future-Forward',
       'Systems Architecture',
       'Product Design',
     ],
     footer: {
-      copyright: '© 2025 Trebol Agency · Bogotá',
+      copyright: '© 2026 Trebol Labs · Bogotá',
     },
   },
 
@@ -139,7 +135,7 @@ export const translations = {
       eyebrow: 'Bogotá, Colombia · Agencia de IT e Innovación',
       available: 'Bogotá, Colombia · Disponibles ahora',
       subtitle:
-        'Trebol convierte ideas audaces en tecnología funcional. Un equipo joven y ambicioso construyendo software que trasciende el momento.',
+        'Trebol Labs convierte ideas audaces en tecnología funcional. Dos ingenieros con hambre por lo más avanzado — MultiStack por naturaleza, ambiciosos por convicción.',
       cta1: 'Ver nuestro trabajo',
       cta2: 'Hablemos',
     },
@@ -148,7 +144,7 @@ export const translations = {
       aside: ['No vendemos un historial.', 'Vendemos talento, tiempo', 'y compromiso total.'],
       stats: [
         { val: 'Early', suffix: ' stage', desc: 'Escribiendo nuestra historia' },
-        { val: 'BOG', suffix: ' based', desc: 'América Latina' },
+        { val: 'BOG', suffix: ' based', desc: 'América Latina y más allá' },
         { val: '100', suffix: '%', desc: 'Todo en juego' },
         { val: '∞', suffix: '', desc: 'Ambición sin límites' },
       ],
@@ -167,7 +163,7 @@ export const translations = {
         },
         {
           name: 'Innovación Tecnológica',
-          desc: 'Integraciones de IA, automatización y sistemas que no siguen tendencias — las crean.',
+          desc: 'Integraciones de IA, automatización y un enfoque MultiStack — usando la tecnología más efectiva, no solo la familiar.',
         },
         {
           name: 'Estrategia Digital',
@@ -194,20 +190,16 @@ export const translations = {
       scrollHint: 'Desplaza para explorar',
       cases: [
         {
-          name: 'Plataforma NeuralOps',
-          sub: 'Plataforma de operaciones inteligentes que reduce la carga manual en un 70%',
+          name: 'FOMAG',
+          sub: 'PWA mobile-first que digitaliza datos de salud de 890.000 docentes colombianos',
         },
         {
-          name: 'Vaultex Core',
-          sub: 'Infraestructura financiera de nueva generación para scale-ups en mercados emergentes',
+          name: 'OCTsense',
+          sub: 'Plataforma IA que diagnostica patologías oculares desde tomografías en segundos',
         },
         {
-          name: 'Red GridSense',
-          sub: 'Monitoreo IoT en tiempo real sobre infraestructura industrial distribuida',
-        },
-        {
-          name: 'Suite Meridian',
-          sub: 'Plataforma SaaS integral para la automatización de flujos de trabajo B2B',
+          name: 'Routyne',
+          sub: 'PWA premium que transforma rutinas en Markdown en sesiones de entrenamiento interactivas',
         },
       ],
     },
@@ -215,10 +207,10 @@ export const translations = {
       label: 'Nuestra convicción',
       part1: 'El futuro no espera a nadie.',
       part2: ' Somos el puente',
-      part3: ' entre donde vive tu idea hoy',
-      part4: ' y adonde está destinada a llegar.',
-      part5: ' Jóvenes, ambiciosos,',
-      part6: ' con todo por demostrar —',
+      part3: ' entre la tecnología y los humanos a quienes sirve.',
+      part4: ' Un robot y un trébol:',
+      part5: ' innovación sin perder',
+      part6: ' lo que nos hace humanos —',
       part7: ' y esa es nuestra mayor ventaja.',
     },
     contact: {
@@ -245,13 +237,13 @@ export const translations = {
     ticker: [
       'Desarrollo de IT',
       'Innovación Digital',
-      'Estrategia Tech',
+      'MultiStack',
       'Orientados al Futuro',
       'Arquitectura de Sistemas',
       'Diseño de Producto',
     ],
     footer: {
-      copyright: '© 2025 Trebol Agency · Bogotá',
+      copyright: '© 2026 Trebol Labs · Bogotá',
     },
   },
 } as const

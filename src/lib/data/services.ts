@@ -11,7 +11,7 @@ export const services: Service[] = [
     num: '02',
     icon: '◈',
     name: 'Tech Innovation',
-    desc: "AI integrations, automation, and systems that don't just follow trends — they create them.",
+    desc: "AI integrations, automation, and a MultiStack approach — using whatever technology is most effective, not just what's familiar.",
   },
   {
     num: '03',
