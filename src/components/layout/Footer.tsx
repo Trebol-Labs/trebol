@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="inline-flex items-center gap-[10px] opacity-50">
         <TrebolMark size={24} color="var(--text-dim)" />
         <span className="font-mono text-[12px] tracking-[.22em] text-[var(--text-dim)] uppercase leading-none">
-          Trebol
+          Trebol Labs
         </span>
       </div>
 

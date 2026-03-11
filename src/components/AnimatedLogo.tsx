@@ -7,7 +7,7 @@ export default function AnimatedLogo() {
   return (
     <Link
       href="/"
-      aria-label="Trebol home"
+      aria-label="Trebol Labs home"
       className="group inline-flex items-center gap-[10px] no-underline"
     >
       {/* Icon mark */}

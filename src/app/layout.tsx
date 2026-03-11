@@ -23,10 +23,14 @@ const bricolage = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://trebol.agency'),
-  title: 'Trebol — Bridge Between Ideas & Future',
+  title: 'Trebol Labs — Bridge Between Ideas & Future',
   description:
-    'Trebol is a young, ambitious software agency based in Bogotá, Colombia. We turn bold ideas into working technology.',
+    'Trebol Labs is a young, ambitious IT & Innovation agency based in Bogotá, Colombia. Two Javerian engineers turning bold ideas into working technology with a MultiStack approach.',
   keywords: [
+    'Trebol Labs',
+    'MultiStack',
+    'software agency Bogotá',
+    'Colombia tech',
     'software agency',
     'tech innovation',
     'software development',
@@ -37,17 +41,17 @@ export const metadata: Metadata = {
     'systems architecture',
   ],
   openGraph: {
-    title: 'Trebol — Bridge Between Ideas & Future',
+    title: 'Trebol Labs — Bridge Between Ideas & Future',
     description:
-      'Trebol turns bold ideas into working technology. A young, ambitious team building software that outlasts the moment.',
+      'Trebol Labs turns bold ideas into working technology. Two Javerian engineers with a hunger for the cutting edge — MultiStack by nature, ambitious by design.',
     url: 'https://trebol.agency',
-    siteName: 'Trebol Agency',
+    siteName: 'Trebol Labs',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Trebol Agency',
+        alt: 'Trebol Labs',
       },
     ],
     locale: 'en_US',
@@ -55,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Trebol — Bridge Between Ideas & Future',
+    title: 'Trebol Labs — Bridge Between Ideas & Future',
     description:
-      'Trebol turns bold ideas into working technology. A young, ambitious team building software that outlasts the moment.',
+      'Trebol Labs turns bold ideas into working technology. Two Javerian engineers with a hunger for the cutting edge — MultiStack by nature, ambitious by design.',
     images: ['/og-image.png'],
   },
 }
