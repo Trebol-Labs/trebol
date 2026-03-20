@@ -1,19 +1,21 @@
 'use client'
 
-import { useEffect } from 'react'
+import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
-import TrebolLogo from '@/components/ui/TrebolLogo'
 import Ticker from '@/components/Ticker'
 import { useLanguage } from '@/contexts/LanguageContext'
 
-const heroVariants = {
+const HeroCanvas = dynamic(() => import('@/components/HeroCanvas'), { ssr: false })
+
+const textCol = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15 } },
 }
 
-const itemVariant = {
-  hidden: { opacity: 0, y: 28 },
+const item = {
+  hidden:  { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: 'easeOut' } },
 }
 
@@ -21,46 +23,6 @@ export default function Hero() {
   const { t } = useLanguage()
   const { scrollY } = useScroll()
   const gridY = useTransform(scrollY, [0, 1000], [0, 270])
-
-  useEffect(() => {
-    let mounted = true
-    let animMotion: any
-    let animTilt: any
-
-    import('animejs').then(({ default: anime }) => {
-      if (!mounted) return
-
-      // Smooth organic floating
-      animMotion = anime({
-        targets: '.hero-watermark-motion',
-        translateY: ['-30px', '30px'],
-        translateX: ['-15px', '15px'],
-        duration: 8000,
-        direction: 'alternate',
-        easing: 'easeInOutSine',
-        loop: true,
-      })
-
-      // 3D Tilt rotation
-      animTilt = anime({
-        targets: '.hero-watermark-tilt',
-        rotateY: ['-25deg', '25deg'],
-        rotateX: ['12deg', '-12deg'],
-        rotateZ: ['-2deg', '2deg'],
-        translateZ: [0, 80],
-        duration: 9000,
-        direction: 'alternate',
-        easing: 'easeInOutQuad',
-        loop: true,
-      })
-    })
-
-    return () => {
-      mounted = false
-      if (animMotion) animMotion.pause()
-      if (animTilt) animTilt.pause()
-    }
-  }, [])
 
   return (
     <section
@@ -94,83 +56,88 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Watermark logo — 3D rotating */}
+      {/* ── Hero content: two-column flex row ── */}
       <div
-        className="absolute right-12 top-1/2 -translate-y-[52%] z-[1] hidden md:block"
-        style={{ perspective: '1800px', perspectiveOrigin: '60% 46%' }}
-        aria-hidden="true"
+        className="flex items-center relative z-[2] min-h-[calc(100vh-44px)]"
+        style={{ padding: 'clamp(80px, 8vw, 120px) clamp(24px, 4vw, 56px) 40px', maxWidth: 1400 }}
       >
-        <div className="hero-watermark-motion" style={{ transformStyle: 'preserve-3d' }}>
-          <div className="hero-watermark-tilt" style={{ transformStyle: 'preserve-3d' }}>
-            <TrebolLogo
-              width="clamp(180px, 18vw, 260px)"
-              height="clamp(230px, 24vw, 320px)"
-              className="opacity-[0.075]"
+        {/* Left: text */}
+        <motion.div
+          className="flex flex-col justify-center flex-1 min-w-0"
+          variants={textCol}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Eyebrow */}
+          <motion.div
+            variants={item}
+            className="flex items-center gap-[14px] font-mono text-[12px] tracking-[.22em] text-sage-muted uppercase mb-[34px]"
+          >
+            <span className="block w-[30px] h-px bg-sage-muted flex-shrink-0" aria-hidden="true" />
+            <span
+              className="inline-block w-1 h-1 rounded-full bg-sage-dim flex-shrink-0"
+              style={{ animation: 'pulse 2.4s ease infinite' }}
+              aria-hidden="true"
             />
-          </div>
+            {t.hero.eyebrow}
+          </motion.div>
+
+          {/* Title */}
+          <motion.h1
+            variants={item}
+            className="font-syne font-extrabold text-brand-white leading-[.95] tracking-[-0.03em]"
+            style={{ fontSize: 'clamp(44px, 7vw, 108px)' }}
+          >
+            BRIDGE<br />
+            <span style={{ WebkitTextStroke: '1px var(--border-accent)', color: 'transparent' }}>
+              BETWEEN
+            </span><br />
+            <span className="text-sage">IDEAS &amp;</span><br />
+            FUTURE
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            variants={item}
+            className="mt-[34px] max-w-[420px] text-[16px] leading-[1.8] text-[var(--text-dim)]"
+          >
+            {t.hero.subtitle}
+          </motion.p>
+
+          {/* Actions */}
+          <motion.div variants={item} className="mt-[50px] flex gap-4 items-center">
+            <Link
+              href="#work"
+              className="bg-sage text-brand-black font-mono text-[12px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline transition-all duration-300 hover:bg-sage-pale hover:-translate-y-0.5 clip-chamfer-md"
+            >
+              {t.hero.cta1}
+            </Link>
+            <Link
+              href="#contact"
+              className="text-sage font-mono text-[12px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline border border-[var(--border-bold)] transition-all duration-300 hover:border-sage hover:bg-[rgba(172,200,162,.05)]"
+            >
+              {t.hero.cta2}
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Right: WebGL canvas */}
+        <div
+          className="hidden md:block flex-shrink-0 self-stretch"
+          style={{
+            width: 'clamp(340px, 44vw, 620px)',
+            minHeight: 'clamp(480px, 65vh, 720px)',
+            pointerEvents: 'none',
+            overflow: 'hidden',
+            borderRadius: '12px',
+          }}
+          aria-hidden="true"
+        >
+          <Suspense fallback={null}>
+            <HeroCanvas />
+          </Suspense>
         </div>
       </div>
-
-      {/* Hero content */}
-      <motion.div
-        className="flex flex-col justify-center relative z-[2] min-h-[calc(100vh-44px)]"
-        style={{ padding: 'clamp(80px, 8vw, 120px) clamp(24px, 4vw, 56px) 40px', maxWidth: 1400 }}
-        variants={heroVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Eyebrow */}
-        <motion.div
-          variants={itemVariant}
-          className="flex items-center gap-[14px] font-mono text-[12px] tracking-[.22em] text-sage-muted uppercase mb-[34px]"
-        >
-          <span className="block w-[30px] h-px bg-sage-muted flex-shrink-0" aria-hidden="true" />
-          <span
-            className="inline-block w-1 h-1 rounded-full bg-sage-dim flex-shrink-0"
-            style={{ animation: 'pulse 2.4s ease infinite' }}
-            aria-hidden="true"
-          />
-          {t.hero.eyebrow}
-        </motion.div>
-
-        {/* Title */}
-        <motion.h1
-          variants={itemVariant}
-          className="font-syne font-extrabold text-brand-white leading-[.95] tracking-[-0.03em]"
-          style={{ fontSize: 'clamp(44px, 7vw, 108px)' }}
-        >
-          BRIDGE<br />
-          <span style={{ WebkitTextStroke: '1px var(--border-accent)', color: 'transparent' }}>
-            BETWEEN
-          </span><br />
-          <span className="text-sage">IDEAS &amp;</span><br />
-          FUTURE
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          variants={itemVariant}
-          className="mt-[34px] max-w-[420px] text-[16px] leading-[1.8] text-[var(--text-dim)]"
-        >
-          {t.hero.subtitle}
-        </motion.p>
-
-        {/* Actions */}
-        <motion.div variants={itemVariant} className="mt-[50px] flex gap-4 items-center">
-          <Link
-            href="#work"
-            className="bg-sage text-brand-black font-mono text-[12px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline transition-all duration-300 hover:bg-sage-pale hover:-translate-y-0.5 clip-chamfer-md"
-          >
-            {t.hero.cta1}
-          </Link>
-          <Link
-            href="#contact"
-            className="text-sage font-mono text-[12px] tracking-[.15em] uppercase px-[34px] py-[15px] no-underline border border-[var(--border-bold)] transition-all duration-300 hover:border-sage hover:bg-[rgba(172,200,162,.05)]"
-          >
-            {t.hero.cta2}
-          </Link>
-        </motion.div>
-      </motion.div>
 
       {/* Location badge */}
       <div
@@ -185,7 +152,7 @@ export default function Hero() {
         {t.hero.available}
       </div>
 
-      {/* Ticker — anchored to bottom of hero, always visible in first viewport */}
+      {/* Ticker */}
       <div className="absolute bottom-0 left-0 right-0 z-[3]">
         <Ticker />
       </div>
